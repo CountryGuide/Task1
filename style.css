@@ -1,0 +1,101 @@
+fieldset {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    font-family: "Calibri";
+}
+
+main {
+    background-color: whitesmoke;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: "Calibri";
+    width: 300px;
+}
+
+input {
+    font-family: "Roboto", sans-serif;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 95%;
+    height: 24px;
+    margin-bottom: 10px;
+    padding: 2px 5px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+}
+
+nav {
+    float: left;
+    background-color: #808080;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 6px 15px;
+    color: #ffffff;
+    background-color: cornflowerblue;
+    border: none;
+}
+
+body {
+    background-color: gainsboro;
+}
+
+header {
+    color: darkgray;
+    text-align:center;
+}
+
+h3 {
+    color: darkgray;
+}
+
+hr {
+    color: lightgrey;
+}
+
+.users,
+.information {
+    width: 300px;
+}
+
+.information {
+    margin-top: 20px;
+    margin-left: 100px;
+    color: #aaa999";
+}
+
+.users {
+    margin-left: 100px;
+    margin-top: 20px;
+    height: 200px;
+}
+
+.note {
+    margin-top: 0px;
+}
+
+.main-menu {
+    height: 500px;
+    width: 50px;
+}
+
+.home,
+.note {
+    margin-left: 10px;
+}
+
+.page-header {
+    margin-top: 20px;
+}

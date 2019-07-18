@@ -1,0 +1,186 @@
+    
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Текстовое поле ввода</title>
+
+
+
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+	<header class="page-header">Library</header>
+
+	<main>
+
+
+		<nav class="main-menu">
+
+			<div><a class="home" href="#home"><img src="home.png" alt=" " width="30" height="30"></a></div>
+
+			<div><a class="note" href="#blog"><img src="note.png" alt=" " width="30" height="30"></a></div>
+		</nav>
+
+
+
+		<form id="MyForm">
+			<fieldset class="information">
+				<legend>Personal Information</legend>
+				<label for="name" style="color: #aaa999">Name</label>
+
+				<input type="text" id="name" name="name" required>
+				<label for="age" style="color: #aaa999">Age</label>
+
+				<input type="number" name="age" id="age" min="18" max="90" required>
+				<hr>
+				<div class="buttons">
+					
+															
+					<input type="submit" value="Add" id="delete1">
+				</div>
+			</fieldset>
+		</form>
+
+
+		<fieldset class="users" style="color: #aaa999" id="users">
+			<div>No users here... yet
+				<hr>
+			</div>
+		</fieldset>
+
+	</main>
+	<script>
+
+function onFormSubmit(e) {
+	//Чтобы форма не перезагружалась 
+	e.preventDefault();
+	//Обозначаем переменные понятными именами
+	const name = document.getElementById("name").value;
+	const age = document.getElementById("age").value;
+	/* 
+	В дальнейшем предполагается, что мы будем хранить в localStorage несколько юзеров
+	Пока не загружаем список из него, а создаем каждый раз новый
+	*/
+	//const users = [name, age];
+	/*const users = [
+    { 
+        "name": " ",
+        "age": " "
+   }
+];*/
+	users.push({name: name, age: age});
+	//JSON.stingify превращает объекты в строки
+	localStorage.setItem ("users", JSON.stringify(users));
+	
+}
+
+/*function outputUsers() {
+	 //var localValue = JSON.parse(localStorage.getItem("users"));
+	users = JSON.parse(localStorage.getItem("users") || "[]");
+  	console.log(users); 
+	const container = document.getElementById("users");
+	container.innerHTML = users.map(function({name:name, age:age}) {
+		return `<ul>${name}</ul>`;
+	}).join('');
+}*/
+
+
+function outputUsers() {
+	 //var localValue = JSON.parse(localStorage.getItem("users"));
+	users = JSON.parse(localStorage.getItem("users") || "[]");
+  	console.log(users); 
+	const container = document.getElementById("users");
+	
+	container.innerHTML = users.map(function (users) {
+	/*markup = `<ul>${name}</ul>`;
+	return markup;*/
+	return `<ul>${users.name}</ul>`;
+	}).join('');
+	}
+
+/*const obj = {a:4, b:5, c:0}; 
+function f (x) { 
+console.log(obj.a); 
+console.log(obj.c); 
+} 
+
+f(obj);*/
+	
+function clear() {
+	document.getElementById("MyForm").reset();
+}
+
+/*function output_to_usrs() {
+	const container = document.getElementById("users");
+container.innerHTML = users.map( function(name) {
+	markup = `<ul><li>${name}</li></ul>`;
+    return markup;
+	});
+}*/
+
+function pageLoaded() {
+	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
+	
+	//const input = document.querySelectorAll('input')[2];
+	//form.addEventListener("click", OnClick);
+
+
+	//form.reset();
+	outputUsers();
+	form.addEventListener('submit', onFormSubmit);
+	form.addEventListener('submit', outputUsers); 
+	form.addEventListener('submit', clear);
+	//form.addEventListener('submit', output_to_usrs);
+		// Добавляет данные в массив при нажатии Add
+	
+}
+
+
+
+//Ждем, когда загрузится весь документ, иначе не можем найти форму
+document.addEventListener('DOMContentLoaded', pageLoaded);
+//document.addEventListener('DOMContentLoaded', outputUsers);	
+
+
+
+//delete1.addEventListener("click", output_to_usrs);
+/*container.innerHTML = users.map(function ( index, users) {
+		const markup = `<li>${users.name}</li>`;
+		return markup;
+	
+});
+        //const container = document.getElementById("users");
+		//const markup = `<li>${users.name}</li>`;
+        //container.innerHTML = markup;
+
+/*
+users.map(function (name, index, users) {
+		const container = document.getElementById("users");
+		const markup = `<li>${users.name}</li>`;
+    container.innerHTML = markup;
+		return name;
+	
+});
+*/
+
+//delete1.addEventListener("click", f);
+/*
+function f() {
+	const container = document.getElementById("users");
+	markup = `<li>${users.name}</li>`;
+    container.innerHTML = markup;
+}
+delete1.addEventListener("click", f);
+*/
+		</script>
+</body>
+
+</html>

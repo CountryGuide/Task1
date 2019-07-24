@@ -76,43 +76,39 @@ function onFormSubmit(e) {
         "age": " "
    }
 ];*/
-	users.push({name: name, age: age});
+//var users = [{"name": "name", "age": "age"}];
+//var users = getUsers();  
+getUsers().push({name: name, age: age});
 	//JSON.stingify превращает объекты в строки
-	localStorage.setItem ("users", JSON.stringify(users));
+	localStorage.setItem ("users", JSON.stringify(getUsers()));
 	
 }
 
-/*function outputUsers() {
-	 //var localValue = JSON.parse(localStorage.getItem("users"));
-	users = JSON.parse(localStorage.getItem("users") || "[]");
-  	console.log(users); 
-	const container = document.getElementById("users");
-	container.innerHTML = users.map(function({name:name, age:age}) {
-		return `<ul>${name}</ul>`;
-	}).join('');
-}*/
 
+function getUsers() {
+	return JSON.parse(localStorage.getItem("users") || "[]");
+}
 
-function outputUsers() {
-	 //var localValue = JSON.parse(localStorage.getItem("users"));
-	users = JSON.parse(localStorage.getItem("users") || "[]");
-  	console.log(users); 
-	const container = document.getElementById("users");
 	
-	container.innerHTML = users.map(function (users) {
-	/*markup = `<ul>${name}</ul>`;
-	return markup;*/
-	return `<ul>${users.name}</ul>`;
+function outputUsers() {
+	const container = document.getElementById("users");
+	container.innerHTML = getUsers().map(function (users) {
+
+	return `<ul>${getUsers().name}</ul>`;
 	}).join('');
 	}
+	
+	
+	
+	/*function outputUsers() {
+		const container = document.getElementById("users");
+		const usersMarkup = getUsers().map(function (users) {
+		container = elem.innerHTML
+		elem.innerHTML = `<li>${users.name}</li>`
+		return `<ul>${usersMarkup}</ul>`;
+		}).join('');
+	}*/
 
-/*const obj = {a:4, b:5, c:0}; 
-function f (x) { 
-console.log(obj.a); 
-console.log(obj.c); 
-} 
-
-f(obj);*/
 	
 function clear() {
 	document.getElementById("MyForm").reset();
@@ -134,8 +130,9 @@ function pageLoaded() {
 
 
 	//form.reset();
-	outputUsers();
+	getUsers();
 	form.addEventListener('submit', onFormSubmit);
+	form.addEventListener('submit', getUsers);
 	form.addEventListener('submit', outputUsers); 
 	form.addEventListener('submit', clear);
 	//form.addEventListener('submit', output_to_usrs);

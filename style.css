@@ -65,6 +65,10 @@ hr {
     color: lightgrey;
 }
 
+li {
+    list-style-type: none; /* Убираем маркеры */
+   }
+
 .users,
 .information {
     width: 300px;
@@ -73,7 +77,7 @@ hr {
 .information {
     margin-top: 20px;
     margin-left: 100px;
-    color: #aaa999";
+    color: #aaa999;
 }
 
 .users {

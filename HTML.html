@@ -1,99 +1,71 @@
-    
 <!DOCTYPE html>
 <html lang="">
-
 <head>
-
 	<meta charset="utf-8">
-
 	<title>Текстовое поле ввода</title>
-
-
-
 	<link rel="stylesheet" href="style.css">
-
 </head>
-
-
 <body>
-
-	<header class="page-header">Library</header>
-
-	<main>
-
-
-		<nav class="main-menu">
-
-			<div><a class="home" href="#home"><img src="home.png" alt=" " width="30" height="30"></a></div>
-
-			<div><a class="note" href="#blog"><img src="note.png" alt=" " width="30" height="30"></a></div>
-		</nav>
-
-
-
-		<form id="MyForm">
-			<fieldset class="information">
-				<legend>Personal Information</legend>
-				<label for="name" style="color: #aaa999">Name</label>
-
-				<input type="text" id="name" name="name" required>
-				<label for="age" style="color: #aaa999">Age</label>
-
-				<input type="number" name="age" id="age" min="18" max="90" required>
-				<hr>
-				<div class="buttons">
-					
-															
-					<input type="submit" value="Add" id="delete1">
-				</div>
-			</fieldset>
-		</form>
-
-
-		<fieldset class="users" style="color: #aaa999" id="users">
-			<div>No users here... yet
-				<hr>
+<header class="page-header">Library</header>
+<main>
+	<nav class="main-menu">
+		<div><a class="home" href="#home"><img src="home.png"></a></div>
+		<div><a class="note" href="#blog"><img src="note.png"></a></div>
+	</nav>
+	<form id="MyForm">
+		<fieldset class="information">
+			<legend>Personal Information</legend>
+			<label for="name">Name</label>
+			<input type="text" id="name" name="name" required>
+			<label for="age">Age</label>
+			<input type="number" name="age" id="age" min="18" max="90" required>
+			<div class="buttons">
+				<input type="submit" value="Add" id="delete1">
 			</div>
 		</fieldset>
+	</form>
+	<div class="users" id="users">
+		No users here... yet
+	</div>
+</main>
+<script>
+	function onFormSubmit(e) {
+		e.preventDefault();
+		const users = getUsers();
+		const name  = document.getElementById("name").value;
+		const age   = document.getElementById("age").value;
+		users.push({ name: name, age: age });
+		localStorage.setItem("users", JSON.stringify(users));
+	}
 
-	</main>
-	<script>
-function onFormSubmit(e) {
-	e.preventDefault();
-	const users = getUsers();
-	const name = document.getElementById("name").value;
-	const age = document.getElementById("age").value;
-	users.push({name: name, age: age});
-	localStorage.setItem ("users", JSON.stringify(users));
-}
+	function getUsers() {
+		return JSON.parse(localStorage.getItem("users") || "[]");
+	}
 
-function getUsers() {
-	return JSON.parse(localStorage.getItem("users") || "[]");
-}
+	function outputUsers() {
+		const users         = getUsers();
+		const container     = document.getElementById("users");
+		const usersMarkup   = users
+			.map(function (users) {
+				return `<li>${users.name}</li>`;
+			})
+			.join('');
+		container.innerHTML = `<ul>${usersMarkup}</ul>`;
+	}
 
-function outputUsers() {
-	const users = getUsers();	
-	const container = document.getElementById("users");
-	const usersMarkup = users.map(function (users) {
-	return `<li>${users.name}</li>`;
-	}).join('');
-	return container.innerHTML = `<ul>${usersMarkup}</ul>`;
-}
+	function clear() {
+		document.getElementById("MyForm").reset();
+	}
 
-function clear() {
-	document.getElementById("MyForm").reset();
-}
+	function pageLoaded() {
+		const form = document.querySelectorAll('form')[0];
+		outputUsers();
+		form.addEventListener('submit', onFormSubmit);
+		form.addEventListener('submit', outputUsers);
+		form.addEventListener('submit', clear);
+	}
 
-function pageLoaded() {
-	const form = document.querySelectorAll('form')[0];
-	form.addEventListener('submit', onFormSubmit);
-	form.addEventListener('submit', getUsers);
-	form.addEventListener('submit', outputUsers); 
-	form.addEventListener('submit', clear);
-}
-
-document.addEventListener('DOMContentLoaded', pageLoaded);
-
-	</script>
+	document.addEventListener('DOMContentLoaded', pageLoaded);
+</script>
 </body>
 </html>

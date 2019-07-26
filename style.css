@@ -4,20 +4,37 @@
 html {
     font-family: Roboto, sans-serif;
 }
+
 body {
     background-color: #eee;
     margin: 0;
+    
 }
 main {
     background-color: #fff;
+    display: grid;
+    grid-column: 3/4;
+    grid-row: 2/3;  
 }
 header {
-    text-align: center;
+    margin-top: 30px;
+    text-align: center;  
+    vertical-align: bottom; 
+    grid-column: 2/-1;
+    grid-row: 1/-1;
+}
+aside {
+    background-color: #ccc; 
+    grid-column: 1/2;
+    grid-row: 1/-1;
 }
 nav {
+    margin-top: 10px;
+    text-align: center;  
     background-color: #ccc;
 }
 nav img {
+    
     width: 30px;
     height: 30px;
 }
@@ -31,6 +48,7 @@ fieldset {
     padding: 20px;
     box-shadow: 0 0 10px #ccc;
     border: 1px solid;
+    background-color:  #ffffff;
 }
 label {
     display: block;
@@ -59,4 +77,12 @@ input[type="submit"] {
     border: 1px solid;
     border-radius: 3px;
     padding: 20px;
+    grid-column: 3/4;
+    grid-row: 4/-2;
+    background-color:  #ffffff;
+}
+.container {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr;
+    grid-template-rows: 100px 200px 50px 1fr 7fr;
 }

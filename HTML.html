@@ -5,17 +5,18 @@
 	<title>Текстовое поле ввода</title>
 	<link rel="stylesheet" href="style.css">
 </head>
-<div class="container">
-<body>
 
+<body>
+<div class="container">
+		<header class="page-header">Library</header>
 	<aside>
 			<nav class="main-menu">
 				<div><a class="home" href="#home"><img src="home.png"></a></div>
 				<div><a class="note" href="#blog"><img src="note.png"></a></div>
 			</nav>
 	</aside>
-	<header class="page-header">Library</header>
-
+	
+		
 <main>
 	<form id="MyForm">
 		<fieldset class="information">
@@ -29,9 +30,9 @@
 			</div>
 		</fieldset>
 	</form>
-	
+	<div class="users" id="users">No users here... yet</div>
 </main>
-<div class="users" id="users">No users here... yet</div>
+</div>
 
 
 <script>
@@ -50,18 +51,16 @@
 
 	function outputUsers() {
 		const users         = getUsers();
-		/*if (localStorage.clear()) {
-		const div = document.getElementById("users");
-		return 
-	}*/
-	
+		if (users.length) {
+		return
+		}
 		const container     = document.getElementById("users");
 		const usersMarkup   = users.map(function (users) {
 				return `<li>${users.name}</li>`;
 			})
 			.join('');
 		container.innerHTML = `<ul>${usersMarkup}</ul>`;
-	
+		
 	}
 
 	function clear() {
@@ -74,18 +73,12 @@
 		form.addEventListener('submit', onFormSubmit);
 		form.addEventListener('submit', outputUsers);
 		form.addEventListener('submit', clear);
-		LocalStorage();
+		
 	}
 
 	document.addEventListener('DOMContentLoaded', pageLoaded);
 	
-	function LocalStorage () {
-	localStorage.clear();
-	const div = document.getElementById("users");
-	div.innerHTML += 'No users here... yet';
-	}
-
 	</script>
 </body>
-</div>
+
 </html>

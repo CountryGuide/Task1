@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-0c38nfCMzF8w8DBI+9nTWzApOpr1z0WuyswL4y6x/2ZTtmj/Ki5TedKeUcFusC/k" crossorigin="anonymous">
 	<meta charset="utf-8">
 	<title>Текстовое поле ввода</title>
 	<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-<header class="page-header">Library</header>
+<div class="container">
+		<header>Library</header>
+	<aside>
+			<nav class="main-menu">
+				<a href=""><i class="fas fa-home"></i></a>
+				<a href=""><i class="far fa-edit"></i></a>
+			</nav>
+	</aside>
+	
+		
 <main>
-	<nav class="main-menu">
-		<div><a class="home" href="#home"><img src="home.png"></a></div>
-		<div><a class="note" href="#blog"><img src="note.png"></a></div>
-	</nav>
 	<form id="MyForm">
-		<fieldset class="information">
+		<fieldset class="block">
 			<legend>Personal Information</legend>
 			<label for="name">Name</label>
 			<input type="text" id="name" name="name" required>
 			<label for="age">Age</label>
 			<input type="number" name="age" id="age" min="18" max="90" required>
-			<div class="buttons">
-				<input type="submit" value="Add" id="delete1">
-			</div>
+			<input type="submit" value="Add" id="delete1">
 		</fieldset>
 	</form>
-	<div class="users" id="users">
-		No users here... yet
-	</div>
+	<div class="block" id="users">No users here... yet</div>
 </main>
+</div>
+
+
 <script>
 	function onFormSubmit(e) {
 		e.preventDefault();
@@ -44,13 +52,16 @@
 
 	function outputUsers() {
 		const users         = getUsers();
+		if (!users.length) {
+		return
+		}
 		const container     = document.getElementById("users");
-		const usersMarkup   = users
-			.map(function (users) {
+		const usersMarkup   = users.map(function (users) {
 				return `<li>${users.name}</li>`;
 			})
 			.join('');
 		container.innerHTML = `<ul>${usersMarkup}</ul>`;
+		
 	}
 
 	function clear() {
@@ -58,14 +69,17 @@
 	}
 
 	function pageLoaded() {
-		const form = document.querySelectorAll('form')[0];
+		const form = document.getElementById("MyForm");
 		outputUsers();
 		form.addEventListener('submit', onFormSubmit);
 		form.addEventListener('submit', outputUsers);
 		form.addEventListener('submit', clear);
+		
 	}
 
 	document.addEventListener('DOMContentLoaded', pageLoaded);
-</script>
+	
+	</script>
 </body>
+
 </html>

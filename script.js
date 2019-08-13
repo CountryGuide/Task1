@@ -12,25 +12,20 @@
 		return JSON.parse(localStorage.getItem("users") || "[]");
     }
 
-  function SortUsers(a, b) {
-    return a.name.toLowerCase() - b.name.toLowerCase();
-  }
-    const users = getUsers(); 
-    users.sort(SortUsers); 
-    //console.log(users);
-
 	function outputUsers() {
-		const users         = getUsers();
+    const users         = getUsers();
+    users.sort(function SortUsers(a, b) {
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+    });
 		if (!users.length) {
 		return
 		}
-		const container     = document.getElementById("users");
-		const usersMarkup   = users.map(function (users) {
-				return `<li>${users.name}</li>`;
-			})
-			.join('');
-		container.innerHTML = `<ul>${usersMarkup}</ul>`;
-		
+    const container     = document.getElementById("users");
+	const usersMarkup   = users.map(function (users) {
+		return `<li>${users.name}</li>`;
+		})
+		.join('');
+	container.innerHTML = `<ul>${usersMarkup}</ul>`;	
 	}
 
 	function clear() {
@@ -41,10 +36,8 @@
 		const form = document.getElementById("MyForm");
 		outputUsers();
         form.addEventListener('submit', onFormSubmit);
-       // form.addEventListener('submit', SortUsers);
 		form.addEventListener('submit', outputUsers);
 		form.addEventListener('submit', clear);
-		
 	}
 
 	document.addEventListener('DOMContentLoaded', pageLoaded);

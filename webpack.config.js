@@ -8,7 +8,8 @@ module.exports = {
 		contentBase:      [path.resolve(__dirname, 'dist'), path.resolve(__dirname, 'src')],
 		liveReload:       true,
 		watchContentBase: true,
-		index:            'index.html'
+		index:            'index.html',
+		host: "192.168.80.108"
 	},
 	module: {
 		rules: [

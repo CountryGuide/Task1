@@ -1,6 +1,7 @@
 import { showLoader } from "loader";
 import { last } from 'lodash';
 import { userFunctions } from "userFn";
+import 'style.css';
 
 
 function onFormSubmit(e) {

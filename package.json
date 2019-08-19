@@ -17,14 +17,24 @@
     "url": "https://github.com/CountryGuide/Task1/issues"
   },
   "homepage": "https://github.com/CountryGuide/Task1#readme",
+  "browserslist": [
+    "last 2 versions"
+  ],
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.15",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.1.2",
+    "precss": "^4.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0"
-  },
-  "dependencies": {
-    "copy-webpack-plugin": "^5.0.4",
-    "lodash": "^4.17.15"
   }
 }

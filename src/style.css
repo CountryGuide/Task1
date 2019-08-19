@@ -22,8 +22,15 @@ header {
     background-color: #fff;
     border-bottom: 1px solid black;
     display: flex;
-    justify-content: center;
+    padding-left: 30px;
+    font-size: 34px;
     align-items: center;
+
+    span {
+        background-color: #444;
+        color: #fff;
+        padding-right: 10px;
+    }
 }
 
 aside {
@@ -80,12 +87,12 @@ input[type="submit"] {
 .container {
     display: grid;
     grid-template-columns: 50px repeat(11, 1fr);
-    grid-template-rows: 50px 1fr;
+    grid-template-rows: 60px 1fr;
     min-height: 100vh;
 }
 
 .hide {
-    display: none!important;
+    display: none !important;
 }
 
 .block {
@@ -99,12 +106,13 @@ input[type="submit"] {
 .groupTitle {
     text-transform: capitalize;
     font-weight: bold;
-}
 
-.groupTitle span {
-    color: #ccc;
-    font-size: 0.8em;
-    font-weight: normal;
+    span:nth-child(2) {
+        color: #ccc;
+        font-size: 0.8em;
+        font-weight: normal;
+        text-transform: none;
+    }
 }
 
 .group {
@@ -112,39 +120,38 @@ input[type="submit"] {
     width: 100%;
     margin-bottom: 15px;
     border-top: 1px solid #ccc;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    li {
+        display: table-row;
+        position: relative;
+
+        &:last-of-type span {
+            border-bottom: none;
+        }
+        span {
+            display: table-cell;
+            border-bottom: 1px dashed #ccc;
+            padding: 5px 0;
+            color: #000;
+
+            &:first-of-type {
+                text-transform: capitalize;
+            }
+
+            &:last-of-type {
+                text-align: right;
+                min-width: 80px;
+            }
+        }
+    }
 }
 
-.group:last-of-type {
-    margin-bottom: 0;
-}
 
-.group li {
-    display: table-row;
-    position: relative;
-}
-
-.group li span {
-    display: table-cell;
-    border-bottom: 1px dashed #ccc;
-    padding: 5px 0;
-    color: #000;
-}
-
-.group li span:first-of-type {
-    text-transform: capitalize;
-}
-
-.group li:last-of-type span {
-    border-bottom: none;
-}
-
-.group li span:last-of-type {
-    text-align: right;
-    min-width: 80px;
-}
-
-aside i.fas,
-aside i.far {
+aside i {
     margin-top: 10px;
     font-size: 24px;
     color: #fff;
@@ -157,80 +164,82 @@ aside i.far {
     right: 0;
     bottom: 0;
     background: #fff;
+
+    .lds-grid {
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: calc(var(--grid-size) * 3 + var(--grid-gap) * 2 + 1px);
+        height: calc(var(--grid-size) * 3 + var(--grid-gap) * 2 + 1px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .lds-grid div {
+        position: absolute;
+        width: var(--grid-size);
+        height: var(--grid-size);
+        border-radius: 50%;
+        background: #004685;
+        animation: lds-grid 1.2s linear infinite;
+
+        &:nth-child(1) {
+            top: 0;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        &:nth-child(2) {
+            top: 0;
+            left: calc(var(--grid-size) + var(--grid-gap));
+            animation-delay: -0.4s;
+        }
+
+        &:nth-child(3) {
+            top: 0;
+            left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+            animation-delay: -0.8s;
+        }
+
+        &:nth-child(4) {
+            top: calc(var(--grid-size) + var(--grid-gap));
+            left: 0;
+            animation-delay: -0.4s;
+        }
+
+        &:nth-child(5) {
+            top: calc(var(--grid-size) + var(--grid-gap));
+            left: calc(var(--grid-size) + var(--grid-gap));
+            animation-delay: -0.8s;
+        }
+
+        &:nth-child(6) {
+            top: calc(var(--grid-size) + var(--grid-gap));
+            left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+            animation-delay: -1.2s;
+        }
+
+        &:nth-child(7) {
+            top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+            left: 0;
+            animation-delay: -0.8s;
+        }
+
+        &:nth-child(8) {
+            top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+            left: calc(var(--grid-size) + var(--grid-gap));
+            animation-delay: -1.2s;
+        }
+
+        &:nth-child(9) {
+            top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+            left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+            animation-delay: -1.6s;
+        }
+    }
 }
 
-.loading .lds-grid {
-    position: absolute;
-    top: 50%;
-    display: inline-block;
-    width: calc(var(--grid-size) * 3 + var(--grid-gap) * 2 + 1px);
-    height: calc(var(--grid-size) * 3 + var(--grid-gap) * 2 + 1px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
-.loading .lds-grid div {
-    position: absolute;
-    width: var(--grid-size);
-    height: var(--grid-size);
-    border-radius: 50%;
-    background: #004685;
-    animation: lds-grid 1.2s linear infinite;
-}
-
-.loading .lds-grid div:nth-child(1) {
-    top: 0;
-    left: 0;
-    animation-delay: 0s;
-}
-
-.loading .lds-grid div:nth-child(2) {
-    top: 0;
-    left: calc(var(--grid-size) + var(--grid-gap));
-    animation-delay: -0.4s;
-}
-
-.loading .lds-grid div:nth-child(3) {
-    top: 0;
-    left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
-    animation-delay: -0.8s;
-}
-
-.loading .lds-grid div:nth-child(4) {
-    top: calc(var(--grid-size) + var(--grid-gap));
-    left: 0;
-    animation-delay: -0.4s;
-}
-
-.loading .lds-grid div:nth-child(5) {
-    top: calc(var(--grid-size) + var(--grid-gap));
-    left: calc(var(--grid-size) + var(--grid-gap));
-    animation-delay: -0.8s;
-}
-
-.loading .lds-grid div:nth-child(6) {
-    top: calc(var(--grid-size) + var(--grid-gap));
-    left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
-    animation-delay: -1.2s;
-}
-
-.loading .lds-grid div:nth-child(7) {
-    top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
-    left: 0;
-    animation-delay: -0.8s;
-}
-
-.loading .lds-grid div:nth-child(8) {
-    top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
-    left: calc(var(--grid-size) + var(--grid-gap));
-    animation-delay: -1.2s;
-}
-
-.loading .lds-grid div:nth-child(9) {
-    top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
-    left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
-    animation-delay: -1.6s;
-}
 
 @keyframes lds-grid {
     0%, 100% {

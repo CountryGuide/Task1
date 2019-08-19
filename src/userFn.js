@@ -4,7 +4,7 @@ import { chain } from "lodash";
 
 const groupDescriptions = {
 	'young':  'under 30',
-	'middle': 'under 60',
+	'middle': 'under 60 and over 30',
 	'old':    'over 60'
 };
 
@@ -50,7 +50,7 @@ export const userFunctions = {
 			const groupMarkup = users[group]
 				.map(user => `<li data-id="${user.id}"><span>${user.name}</span><span>${user.age} years old</span></li>`)
 				.join('');
-			return `<div class="groupTitle">${group} <span>${groupDescriptions[group]}</span></div><ul class="group">${groupMarkup}</ul>`
+			return `<div class="groupTitle"><span>${group}</span>&nbsp;<span>(${groupDescriptions[group]})</span></div><ul class="group">${groupMarkup}</ul>`
 		});
 		container.innerHTML = groups.join('');
 	}

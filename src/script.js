@@ -1,3 +1,4 @@
+import { showLoader } from "loader";
 import { last } from 'lodash';
 import { userFunctions } from "userFn";
 
@@ -8,8 +9,11 @@ function onFormSubmit(e) {
 	const name     = document.getElementById("name").value;
 	const age      = document.getElementById("age").value;
 	const lastUser = last(users);
+	showLoader();
 	users.push({ name: name, age: age, id: lastUser ? lastUser.id + 1 : 0 });
 	userFunctions.saveUsers(users);
+	userFunctions.outputUsers();
+	clear();
 }
 
 function clear() {
@@ -21,8 +25,6 @@ function pageLoaded() {
 	const usersList = document.getElementById('users');
 	userFunctions.outputUsers();
 	form.addEventListener('submit', onFormSubmit);
-	form.addEventListener('submit', userFunctions.outputUsers);
-	form.addEventListener('submit', clear);
 	usersList.addEventListener('click', userFunctions.deleteUser);
 }
 

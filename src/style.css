@@ -1,3 +1,8 @@
+:root {
+    --grid-size: 9px;
+    --grid-gap: 3px;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -79,7 +84,12 @@ input[type="submit"] {
     min-height: 100vh;
 }
 
+.hide {
+    display: none!important;
+}
+
 .block {
+    position: relative;
     border: 1px solid;
     background-color: #ffffff;
     padding: 20px;
@@ -138,6 +148,98 @@ aside i.far {
     margin-top: 10px;
     font-size: 24px;
     color: #fff;
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.loading .lds-grid {
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: calc(var(--grid-size) * 3 + var(--grid-gap) * 2 + 1px);
+    height: calc(var(--grid-size) * 3 + var(--grid-gap) * 2 + 1px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading .lds-grid div {
+    position: absolute;
+    width: var(--grid-size);
+    height: var(--grid-size);
+    border-radius: 50%;
+    background: #004685;
+    animation: lds-grid 1.2s linear infinite;
+}
+
+.loading .lds-grid div:nth-child(1) {
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.loading .lds-grid div:nth-child(2) {
+    top: 0;
+    left: calc(var(--grid-size) + var(--grid-gap));
+    animation-delay: -0.4s;
+}
+
+.loading .lds-grid div:nth-child(3) {
+    top: 0;
+    left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+    animation-delay: -0.8s;
+}
+
+.loading .lds-grid div:nth-child(4) {
+    top: calc(var(--grid-size) + var(--grid-gap));
+    left: 0;
+    animation-delay: -0.4s;
+}
+
+.loading .lds-grid div:nth-child(5) {
+    top: calc(var(--grid-size) + var(--grid-gap));
+    left: calc(var(--grid-size) + var(--grid-gap));
+    animation-delay: -0.8s;
+}
+
+.loading .lds-grid div:nth-child(6) {
+    top: calc(var(--grid-size) + var(--grid-gap));
+    left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+    animation-delay: -1.2s;
+}
+
+.loading .lds-grid div:nth-child(7) {
+    top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+    left: 0;
+    animation-delay: -0.8s;
+}
+
+.loading .lds-grid div:nth-child(8) {
+    top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+    left: calc(var(--grid-size) + var(--grid-gap));
+    animation-delay: -1.2s;
+}
+
+.loading .lds-grid div:nth-child(9) {
+    top: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+    left: calc(var(--grid-size) * 2 + var(--grid-gap) * 2);
+    animation-delay: -1.6s;
+}
+
+@keyframes lds-grid {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 @media screen and (max-width: 768px) {

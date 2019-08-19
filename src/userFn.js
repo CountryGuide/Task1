@@ -1,3 +1,4 @@
+import { showLoader } from "loader";
 import { chain } from "lodash";
 
 
@@ -19,6 +20,7 @@ export const userFunctions = {
 
 		if (!target) return;
 
+		showLoader();
 		const users = userFunctions.getUsers().filter(user => user.id !== Number(target.dataset.id));
 		userFunctions.saveUsers(users);
 		userFunctions.outputUsers();

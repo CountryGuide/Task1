@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap&subset=cyrillic"
+	      rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css"
+	      integrity="sha384-0c38nfCMzF8w8DBI+9nTWzApOpr1z0WuyswL4y6x/2ZTtmj/Ki5TedKeUcFusC/k" crossorigin="anonymous">
+	<script defer src="./build.js"></script>
+	<link rel="shortcut icon" href="favicon.ico">
+	<meta charset="utf-8">
+	<meta name="viewport"
+	      content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Текстовое поле ввода</title>
+</head>
+
+<body>
+<div class="container">
+	<header>LIB<span>RARY</span></header>
+	<aside>
+		<nav class="main-menu">
+			<a href=""><i class="fas fa-home"></i></a>
+			<a href=""><i class="far fa-edit"></i></a>
+		</nav>
+	</aside>
+
+
+	<main>
+		<form id="MyForm">
+			<fieldset class="block">
+				<legend>Personal Information</legend>
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" required>
+				<label for="age">Age</label>
+				<input type="number" name="age" id="age" min="18" max="90" required>
+				<input type="submit" value="Add" id="delete1">
+			</fieldset>
+		</form>
+		<div class="block">
+			<div id="users">No users here... yet</div>
+			<div class="loading hide">
+				<div class="lds-grid">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+</body>
+</html>

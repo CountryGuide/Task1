@@ -9,7 +9,7 @@ module.exports = {
 		liveReload:       true,
 		watchContentBase: true,
 		index:            'index.html',
-		host: "192.168.80.108"
+		port: "3000"
 	},
 	module: {
 		rules: [
